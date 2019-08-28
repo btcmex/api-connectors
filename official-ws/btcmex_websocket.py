@@ -157,7 +157,6 @@ class BTCMEXWebsocket:
         '''
 
         # You can sub to orderBookL2 for all levels, or orderBook10 for top 10 levels & save bandwidth
-        # 订阅信息，modified by chaiyu
         symbolSubs = ["instrument", "order", "orderBookL2", "trade", "liquidation"]
         genericSubs = ["margin", "execution", "position"]
         subscriptions = [sub + ':' + self.symbol for sub in symbolSubs]
@@ -194,7 +193,7 @@ class BTCMEXWebsocket:
 
     def __on_message(self, message):
         '''Handler for parsing WS messages.'''
-        # ws 消息回调接口，modified by chaiyu
+        # ws message callback
         message = json.loads(message)
         self.logger.debug(json.dumps(message))
         table = message['table'] if 'table' in message else None
