@@ -10,7 +10,7 @@ def run():
 
     # Instantiating the WS will make it connect. Be sure to add your api_key/api_secret.
     ws = BTCMEXWebsocket(endpoint="wss://www.btcmex.com/realtime", symbol="XBTUSD",
-                         api_key="Kr81Dcvl3b65OD6ejIHP", api_secret="uiUtwgwG3qO1TK4Rt3T2yJH2TWfrla09Cytq32KQZ08sPgnlUrH9147v76PHn5jm166J26V2Y1XTWg74StCqb80Ie1qBeXL07zM")
+                         api_key="", api_secret="")
     logger.info("Instrument data: %s" % ws.get_instrument())
 
     # Run forever
