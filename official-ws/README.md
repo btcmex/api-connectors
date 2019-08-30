@@ -1,4 +1,4 @@
-- BTCMEX提供一个完整的pub/sub API with table diffing over WebSocket。 您可以订阅任何 [可用表 ](#subscriptions)上的实时更改。
+- BTCMEX 通过 WebSocket 提供一个完整的 pub/sub API。 您可以订阅任何 [可用表 ](#subscriptions)上的实时更改。
 
   - 连接
     - [所有指令](#所有指令)
