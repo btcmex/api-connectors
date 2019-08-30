@@ -162,9 +162,6 @@ class BTCMEXWebsocket:
         subscriptions = [sub + ':' + self.symbol for sub in symbolSubs]
         subscriptions += genericSubs
 
-        subscriptions = [sub + ':' + self.symbol for sub in symbolSubs]
-
-
         urlParts = list(urllib.parse.urlparse(self.endpoint))
         urlParts[0] = urlParts[0].replace('http', 'ws')
         urlParts[2] = "/realtime?subscribe={}".format(','.join(subscriptions))
