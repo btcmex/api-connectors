@@ -20,9 +20,9 @@ BTCMEX 通过 WebSocket 提供一个完整的 pub/sub API。 您可以订阅任�
 
 #### 订阅
 
-BTCMEX 允许订阅实时数据。 一旦连接成功，该访问方方式没有频率限制，它是获取最新数据的最好方法。
+BTCMEX 允许订阅实时数据。 一旦连接成功，该访问方式没有频率限制，它是获取最新数据的最好方法。
 
-要订阅主题，请发送逗号分隔的主题列表。例如︰ 例如：
+要订阅主题，请发送逗号分隔的主题列表。例如︰ 
 
 ```
 wss://www.btcmex.com/realtime?subscribe=instrument:XBTUSD,order:XBTUSD,orderBookL2:XBTUSD,trade:XBTUSD,liquidation:XBTUSD
@@ -36,12 +36,12 @@ wss://www.btcmex.com/realtime?subscribe=instrument:XBTUSD,order:XBTUSD,orderBook
 
 通过发送订阅主题数组，您可以一次订阅多个主题。
 
-下面的订阅主题是无需身份验证：
+下列订阅主题无需身份验证：
 
   ```
   "orderBookL2_25", // 前25层的Level2委托列表 
   "orderBookL2",    // 完整的level2委托列表 
-  "orderBook10",    // 前10层的委托列表，用传统的完整委托列表推送 
+  "orderBook10",    // 前10层的委托列表，传统的完整委托列表推送 
   "trade",          // 实时交易，对应UI近期交易列表 
   "instrument",     // 产品更新，包括交易量以及报价 
   "liquidation",    // 进入委托列表的强平委托
@@ -51,15 +51,15 @@ wss://www.btcmex.com/realtime?subscribe=instrument:XBTUSD,order:XBTUSD,orderBook
 
   ```
   "margin",     // 你账户的余额和保证金要求的更新 
-  "positon",    // 你仓位的更新 
+  "position",    // 你仓位的更新 
   "execution",  // 获取您账户所有的原始执行 
   ```
 
 如果您想获得实时委托列表数据，建议您使用 orderBookL2_25 订阅。 orderBook10 在任何数据变动时都推送完整的 10 个深度列表，这意味着更多的数据量。 
-  
+
 orderBookL2 推送完整的 L2 委托列表，但有效载荷可能变得非常大。 orderbookL2_25 提供完整 L2 委托列表的子集。 如果对延时有较高要求，请使用 orderBookL2。在 orderBookL2_25 或 orderBookL2 中的 id 字段是根据价格和合约符号计算的，因此对于任何价格，它是唯一的，被用于 update 和 delete 操作。
 
-适用时，订阅时可以在主题后加冒号进行筛选。 例如，trade:XBTUSD 将只订阅 XBTUSD 的消息。
+使用时，订阅可以在主题后加冒号进行筛选。 例如，trade:XBTUSD 将只订阅 XBTUSD 的消息。
 
 示例数据：
 
@@ -95,7 +95,7 @@ orderBookL2 推送完整的 L2 委托列表，但有效载荷可能变得非常�
 
 对于数据回应的一些注意事项：
 
-- 订阅确认后，您将收到一条消息，其中包含 “action”：“partial” 。 该信息是您订阅数据的当前镜像，在这之后，您可以基于它使用增量变化。
+- 订阅确认后，您将收到一条消息，其中包含 “action”：“partial” 。 该信息是您订阅数据的当前镜像，在这之后，您可以收到基于它使用增量变化信息。
   - 如果您在 partial 消息之前收到任何其他消息，请忽略它们。
 - partial 还包含一些表格信息，如 keys ，types 和 foreignKeys 。 根据您的应用程序，这些数据可能会很有用。
   - 在keys中的列总是返回一个插入 ，删除 ，或更新。 使用它们查找要在存储中修改哪些项目。
