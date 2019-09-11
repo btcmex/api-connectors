@@ -122,7 +122,7 @@ API 密钥可以被锁定到某个 IP 地址的范围，撤消该密钥并不影
 * 在连接建立后，发送 `"authKeyExpires"`。
 ```
 
-无论哪种方式，请使用签署 GET / signature 的签名。 
+无论哪种方式，请使用签署 `GET/api/v1/signature` 的签名。
 
 ```
 //签名是十六进制的 hex(HMAC_SHA256(secret, 'GET/api/v1/signature' + expires)) // expires 必须是一个数字，而不是一个字符串。 {"op": "authKeyExpires", "args": ["<APIKey>", <expires>, "<signature>"]}
