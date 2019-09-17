@@ -50,9 +50,10 @@ wss://www.btcmex.com/realtime?subscribe=instrument:XBTUSD,order:XBTUSD,orderBook
 下列主题要求进行身份验证︰
 
   ```
-  "margin",     // 你账户的余额和保证金要求的更新 
+  "order",       // 你的委托更新
+  "margin",      // 你账户的余额和保证金要求的更新 
   "position",    // 你仓位的更新 
-  "execution",  // 获取您账户所有的原始执行 
+  "execution",   // 获取您账户所有的原始执行 
   ```
 
 如果您想获得实时委托列表数据，建议您使用 orderBookL2_25 订阅。 orderBook10 在任何数据变动时都推送完整的 10 个深度列表，这意味着更多的数据量。 
